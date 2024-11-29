@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const defaultValues = {
   name: "",
@@ -8,6 +9,7 @@ const defaultValues = {
 
 const Signin = () => {
   const [userData, setUserData] = useState(defaultValues);
+  const navigate = useNavigate();
 
   const handelChange = (e) => {
     const { value, name } = e.target;
@@ -15,6 +17,12 @@ const Signin = () => {
   };
 
   const clearValues = () => {
+    if (userData.email != "") {
+      navigate("/login");
+    } else alert("unvalid Form");
+    const storeData = localStorage.getItem("data");
+    let preData = storeData ? JSON.parse(storeData) : [];
+    localStorage.setItem("data", JSON.stringify([...preData, userData]));
     setUserData(defaultValues);
   };
 
@@ -58,10 +66,17 @@ const Signin = () => {
       </div>
       <button
         onClick={clearValues}
-        className="bg-slate-100 text-xl font-bold  p-2 mt-10 rounded-md"
+        className="bg-slate-100 text-xl font-bold mb-6 p-2 mt-10 rounded-md"
       >
         Signup
       </button>
+      <p className="text-right font-semibold">
+        if you already signup
+        <Link className="font-bold text-blue-100 px-1" to="/login">
+          login
+        </Link>
+        here
+      </p>
     </div>
   );
 };
