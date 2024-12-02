@@ -2,9 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  let loginUser = localStorage.getItem("user");
-  let validUser = loginUser ? JSON.parse(loginUser) : "";
-  console.log(validUser);
   let navigate = useNavigate();
   const handelRemove = () => {
     localStorage.removeItem("user");

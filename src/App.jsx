@@ -8,7 +8,7 @@ import Protected from "./components/protected";
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/signin",
       element: <Signin />,
     },
     {
@@ -16,7 +16,7 @@ const App = () => {
       element: <Login />,
     },
     {
-      path: "/home",
+      path: "/",
       element: <Protected Component={Home} />,
     },
   ]);
