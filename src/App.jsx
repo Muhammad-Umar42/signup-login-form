@@ -3,6 +3,7 @@ import Signin from "./pages/signin";
 import Login from "./pages/login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
+import Protected from "./components/protected";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -16,7 +17,7 @@ const App = () => {
     },
     {
       path: "/home",
-      element: <Home />,
+      element: <Protected Component={Home} />,
     },
   ]);
 

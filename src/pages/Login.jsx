@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const defaultValues = {
@@ -24,10 +24,15 @@ const Login = () => {
         return true;
       }
     });
+    console.log("ff", findUser);
     if (findUser) {
+      localStorage.setItem("user", JSON.stringify(loginData));
       navigate("/home");
-    } else alert("user invalid");
+    } else {
+      alert("User not found or invalid credentials");
+    }
   };
+  console.log("login", loginData);
   return (
     <div className="bg-gradient-to-t from-sky-400 to-sky-600 p-8 rounded-lg w-full max-w-xl mx-auto mt-40">
       <h1 className="text-3xl text-white font-bold text-center mb-5">Log in</h1>
